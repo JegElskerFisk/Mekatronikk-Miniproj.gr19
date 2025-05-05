@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="qube">
+  <!-- Hent inn qube modellen -->
   <xacro:include filename="$(find qube_description)/urdf/qube.macro.xacro" />
   <xacro:qube/>
-
+  
+  <!-- Link Qube til scene -->
   <link name="world"/>
   <joint name="world_to_base" type="fixed">
     <parent link="world"/>

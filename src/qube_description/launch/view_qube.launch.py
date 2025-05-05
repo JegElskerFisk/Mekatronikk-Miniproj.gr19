@@ -15,7 +15,7 @@ def generate_launch_description():
     urdf_xml = doc.toxml()
 
     return LaunchDescription([
-        # Robot state publisher
+        # Robot state publisher node -- publiserer TF av robot modell til /robot_description fra qube URDF
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
@@ -24,7 +24,7 @@ def generate_launch_description():
             output='screen',
         ),
 
-        # Joint state publisher med GUI
+        # Joint state publisher med GUI -- publiserer input meldinger til /joint_states som RSP leser
         Node(
             package='joint_state_publisher_gui',
             executable='joint_state_publisher_gui',
@@ -32,7 +32,7 @@ def generate_launch_description():
             output='screen',
         ),
         
-        # Rviz2 for visualisering
+        # Rviz2 for visualisering -- config fra view_qube.rviz
         Node(
             package='rviz2',
             executable='rviz2',

@@ -136,7 +136,7 @@
     </link>
 
     <!-- Base til disk : Spinner -->
-    <joint name="disk_joint" type="continuous">
+    <joint name="motor_joint" type="continuous">
       <origin xyz="0 0 ${base_height/2 + disk_thickness/2}" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
       <parent link="base"/>
