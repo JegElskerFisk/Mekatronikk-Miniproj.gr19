@@ -1,0 +1,49 @@
+Panels:
+  - Class: rviz_common/Displays
+  - Class: rviz_common/Tool Properties
+  - Class: rviz_common/Views
+
+# Viser "world" og legger til en RobotModel som henter URDF fra /robot_description
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: world
+
+  Displays:
+# Grid i bunn
+    - Name: Grid
+      Class: rviz_default_plugins/Grid
+      Enabled: true
+      Reference Frame: world
+      Plane: XY
+      Cell Size: 0.1
+      Plane Cell Count: 20
+# Flytter Grid ned til føttene
+      Offset: 
+        X: 0
+        Y: 0
+        Z: -0.058
+        
+# Quben
+    - Name: RobotModel
+      Class: rviz_default_plugins/RobotModel
+      Enabled: true
+      Description Source: Topic
+      Description Topic:
+        Value: /robot_description
+
+# Standard cursor : MoveCamera
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+
+# Zoomer inn litt
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 1.5
+      Focal Point:
+        X: 0.0
+        Y: 0.0
+        Z: 0.0
+      
+
