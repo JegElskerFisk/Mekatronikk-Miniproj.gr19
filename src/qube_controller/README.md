@@ -60,7 +60,7 @@ Etter at pakken er bygget:
 ros2 run qube_controller pid_controller
 ```
 
-> 💡 Krever at `/joint_states` publiseres og at `/velocity_controller/commands` er aktiv i kontrollsystemet.
+Krever at `/joint_states` publiseres og at `/velocity_controller/commands` er aktiv i kontrollsystemet.
 
 ---
 
