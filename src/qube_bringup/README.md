@@ -13,10 +13,6 @@ qube_bringup/
 │   └── __init__.py
 ├── resource/
 │   └── qube_bringup
-├── test/
-│   ├── test_copyright.py
-│   ├── test_flake8.py
-│   └── test_pep257.py
 ├── urdf/
 │   └── controlled_qube.urdf.xacro
 ├── package.xml
@@ -48,9 +44,6 @@ qube_bringup/
 
 - `qube_bringup/__init__.py`: Init-fil for ROS2-kompatibel Python-pakke. Kreves av strukturen.
 
-### Tester
-
-- `test/test_flake8.py`, `test_pep257.py`, `test_copyright.py`: Sikrer overholdelse av kodestandard og lisens.
 
 ## Systeminteraksjoner og flyt
 
