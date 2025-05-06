@@ -97,14 +97,6 @@ Kontrolleren håndterer:
 
 ---
 
-## Fremtidig arbeid
-
-- Ekstern YAML-konfigurasjon for enklere tuning
-- Logging av responsdata
-- Dynamisk referanse via nytt topic
-
----
-
 ## Avhengigheter
 
 - `rclpy`
