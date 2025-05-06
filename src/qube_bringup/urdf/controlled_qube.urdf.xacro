@@ -8,7 +8,7 @@
   <link name="world"/>
   <joint name="world_to_base" type="fixed">
     <parent link="world"/>
-    <child link="base"/>
+    <child link="base_link"/>
   </joint>
   
   <!-- driver argumenter -->
@@ -17,7 +17,7 @@
   <xacro:arg name="simulation" default="false"/>
   
   <!-- Hent inn qube_driver_ros2_control -->
-  <xacro:include filename="$(find qube_driver)/ros2_control/qube_driver.ros2_control.xacro" />
+  <xacro:include filename="$(find qube_driver)/ros2_control/qube_driver.ros2_control.xacro"/>
   <xacro:qube_driver_ros2_control
     name="qube_driver"
     prefix=""

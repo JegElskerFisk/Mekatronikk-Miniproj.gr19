@@ -55,7 +55,7 @@
     <xacro:property name="indicator_origo" value="0 0 ${disk_thickness/4}" />
     
     <!-- Base link -->
-    <link name="base">
+    <link name="base_link">
       <!-- Svart boks -->
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -139,7 +139,7 @@
     <joint name="motor_joint" type="continuous">
       <origin xyz="0 0 ${base_height/2 + disk_thickness/2}" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
-      <parent link="base"/>
+      <parent link="base_link"/>
       <child link="disk"/>
     </joint>
   </xacro:macro>

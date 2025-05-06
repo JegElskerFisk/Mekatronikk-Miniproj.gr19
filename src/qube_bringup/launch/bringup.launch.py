@@ -24,12 +24,7 @@ def generate_launch_description():
     launch_driver = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(driver_pkg, 'launch', 'qube_driver.launch.py')
-        ),
-        launch_arguments={
-            'baud_rate': LaunchConfiguration('baud_rate'),
-            'device':    LaunchConfiguration('device'),
-            'simulation':LaunchConfiguration('simulation')
-        }.items()
+        )
     )
 
     robot_description = ParameterValue(
@@ -48,7 +43,7 @@ def generate_launch_description():
         executable='robot_state_publisher',
         name='robot_state_publisher',
         parameters=[{
-            'use_sim_time': LaunchConfiguration('simulation'),
+            'use_sim_time': False,
             'robot_description': robot_description
           }],
         output='screen'
