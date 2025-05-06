@@ -55,10 +55,26 @@ Etter at workspace er bygd, kan systemet startes med:
 ros2 launch qube_bringup bringup.launch.py
 ```
 
+For simulasjon mode brukes argument:
+
+```bash
+ros2 launch qube_bringup bringup.launch.py simulation:=true
+```
+
 Du kan også spesifisere seriellport og simulasjonsmodus:
 
 ```bash
 ros2 launch qube_bringup bringup.launch.py device:=/dev/ttyACM1 simulation:=false
+```
+
+PID kontroller startes med:
+```bash
+ros2 launch qube_controller controller.launch.py
+```
+
+Parametre kan endres etter oppstart med:
+```bash
+ros2 param set /pid_controller setpoint 3.0
 ```
 
 ---
