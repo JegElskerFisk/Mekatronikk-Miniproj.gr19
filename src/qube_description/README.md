@@ -69,31 +69,33 @@ qube_description/
 
 Følgende komponenter samarbeider i visualiseringssystemet:
 
+
 ```
-                       +---------------------------+     +---------------------------+
-                       | /joint_state_broadcaster  |     |   /velocity_controller    |    
-                       +---------------------------+     +---------------------------+
-                                   |
-                                   v
-                            +---------------+
-                            | /joint_states |
-                            +---------------+
-                                   |
-                                   v
-                       +-----------------------------+
-                       |  /robot_state_publisher     |
-                       +-----------------------------+
-                               |                  |
-                               v                  v
-                  +--------------------+       +---------+
-                  | /robot_description |       |   /tf   |
-                  +--------------------+       +---------+
-                         |                          |
-                         v                          v
-            +-----------------------+   +--------------------------+
-            |  /controller_manager  |   | /transform_listener_impl |
-            +-----------------------+   +--------------------------+
-```
+                                +-----------------------------+
+                                | /joint_state_publisher_gui  |
+                                +-----------------------------+
+                                      ^               |
+                                      |               v
+                          +-------------------+   +---------------+
+                          | /robot_description|   | /joint_states |
+                          +-------------------+   +---------------+
+                                      ^               |
+                                      |               v
+                                +-----------------------------+
+                                |   /robot_state_publisher    |
+                                +-----------------------------+
+                                              |
+                                              v
+                                        +-----------+
+                                        |    /tf    |
+                                        +-----------+
+                                              |
+                                              v
+                        +--------------------------------------------+
+                        | /transform_listener_impl_5f18b7b6a550      |
+                        |              (RViz lytter)                 |
+                        +--------------------------------------------+
+ ``` 
 
 
 
@@ -144,20 +146,7 @@ Dette starter:
 - GUI for manuell joint-styring
 - Publisering av `/tf`, `/robot_description`, og `/joint_states`
 
-## Testing
 
-Testene kan kjøres slik:
-
-```bash
-colcon test
-colcon test-result --verbose
-```
-
-Pakken inneholder tester for:
-
-- Kodeformat (PEP8)
-- Dokumentasjonsstil (PEP257)
-- Copyright-header
 
 ## Avhengigheter
 
