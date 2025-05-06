@@ -1,146 +1,349 @@
 <?xml version="1.0"?>
+
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
+
   <xacro:macro name="qube" params="">
-  
+
+ 
+
     <!-- Farger -->
+
     <material name="base_black">
+
       <color rgba="0 0 0 1"/>
+
     </material>
+
     <material name="top_stripe_red">
+
       <color rgba="1 0 0 1"/>
+
     </material>
+
     <material name="bottom_stripe_red">
+
       <color rgba="1 0 0 1"/>
+
     </material>
+
     <material name="foot1_gray">
+
       <color rgba="0.5 0.5 0.5 1"/>
+
     </material>
+
     <material name="foot2_gray">
+
       <color rgba="0.5 0.5 0.5 1"/>
+
     </material>
+
     <material name="foot3_gray">
+
       <color rgba="0.5 0.5 0.5 1"/>
+
     </material>
+
     <material name="foot4_gray">
+
       <color rgba="0.5 0.5 0.5 1"/>
+
     </material>
+
     <material name="disk_red">
+
       <color rgba="1 0 0 1"/>
+
     </material>
+
     <material name="indicator_white">
+
       <color rgba="1 1 1 1"/>
+
     </material>
-    
+
+   
+
     <!-- Base parametre : Offisielle qube dimensjoner -->
+
     <xacro:property name="base_xy" value="0.102" />
-    <xacro:property name="base_height" value="0.112" /> 
+
+    <xacro:property name="base_height" value="0.112" />
+
     <!-- Striper -->
+
     <xacro:property name="stripe_width" value="0.01" />
+
     <xacro:property name="stripe1_origo" value="0 0 ${base_height/2 - 0.01}" />
+
     <xacro:property name="stripe2_origo" value="0 0 ${-(base_height/2 - 0.01)}" />
+
     <!-- Føtter -->
+
     <xacro:property name="foot_radius" value="0.005" />
+
     <xacro:property name="foot_height" value="0.002" />
+
     <xacro:property name="foot1_origo" value="${base_xy/2 - foot_radius} ${base_xy/2 - foot_radius} ${-(base_height/2 + foot_height/2)}" />
+
     <xacro:property name="foot2_origo" value="${-(base_xy/2 - foot_radius)} ${base_xy/2 - foot_radius} ${-(base_height/2 + foot_height/2)}" />
+
     <xacro:property name="foot3_origo" value="${base_xy/2 - foot_radius} ${-(base_xy/2 - foot_radius)} ${-(base_height/2 + foot_height/2)}" />
+
     <xacro:property name="foot4_origo" value="${-(base_xy/2 - foot_radius)} ${-(base_xy/2 - foot_radius)} ${-(base_height/2 + foot_height/2)}" />
-      
+
+     
+
     <!-- Disk parametre -->
+
     <xacro:property name="disk_radius" value="0.03" />
+
     <xacro:property name="disk_thickness" value="0.01" />
+
     <!-- Indikator -->
-    <xacro:property name="indicator_width" value="0.005" />
-    <xacro:property name="indicator_thickness" value="0.002" />
-    <xacro:property name="indicator_origo" value="0 0 ${disk_thickness/4}" />
-    
+
+    <xacro:property name="indicator_width" value="0.005" /> 
+
+    <xacro:property name="indicator_thickness" value="0.004" /> 
+
+    <xacro:property name="indicator_origo" value="0 ${disk_radius/2} ${disk_thickness/2}" />
+
     <!-- Base link -->
-    <link name="base_link">
+
+    <link name="base">
+
       <!-- Svart boks -->
+
       <visual>
+
         <origin xyz="0 0 0" rpy="0 0 0"/>
+
         <geometry>
+
           <box size="${base_xy} ${base_xy} ${base_height}"/>
+
         </geometry>
+
         <material name="base_black"/>
+
       </visual>
-      
-      <!-- Rød stripe top -->
-      <visual>
-        <origin xyz="${stripe1_origo}" rpy="0 0 0"/>
-        <geometry>
-          <box size="${base_xy + 0.005} ${base_xy + 0.005} ${stripe_width}"/>
-        </geometry>
-        <material name="top_stripe_red"/>
-      </visual>
-      
-      <!-- Rød stripe bunn -->
-      <visual>
-        <origin xyz="${stripe2_origo}" rpy="0 0 0"/>
-        <geometry>
-          <box size="${base_xy + 0.005} ${base_xy + 0.005} ${stripe_width}"/>
-        </geometry>
-        <material name="bottom_stripe_red"/>
-      </visual>
-      
+
+     
+
       <!-- Føtter -->
+
       <visual>
+
         <origin xyz="${foot1_origo}" rpy="0 0 0"/>
+
         <geometry>
+
           <cylinder radius="${foot_radius}" length="${foot_height}"/>
+
         </geometry>
+
         <material name="foot1_gray"/>
+
       </visual>
+
       <visual>
+
         <origin xyz="${foot2_origo}" rpy="0 0 0"/>
+
         <geometry>
+
           <cylinder radius="${foot_radius}" length="${foot_height}"/>
+
         </geometry>
+
         <material name="foot2_gray"/>
+
       </visual>
+
       <visual>
+
         <origin xyz="${foot3_origo}" rpy="0 0 0"/>
+
         <geometry>
+
           <cylinder radius="${foot_radius}" length="${foot_height}"/>
+
         </geometry>
+
         <material name="foot3_gray"/>
+
       </visual>
+
       <visual>
+
         <origin xyz="${foot4_origo}" rpy="0 0 0"/>
+
         <geometry>
+
           <cylinder radius="${foot_radius}" length="${foot_height}"/>
+
         </geometry>
+
         <material name="foot4_gray"/>
+
       </visual>
+
     </link>
+
+ 
+
+    <!-- Top stripe link -->
+
+    <link name="top_stripe_link">
+
+      <!-- Rød stripe top -->
+
+      <visual>
+
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+
+        <geometry>
+
+          <box size="${base_xy + 0.005} ${base_xy + 0.005} ${stripe_width}"/>
+
+        </geometry>
+
+        <material name="top_stripe_red"/>
+
+      </visual>
+
+    </link>
+
+ 
+
+    <!-- Bottom stripe link -->
+
+    <link name="bottom_stripe_link">
+
+      <!-- Rød stripe bunn -->
+
+      <visual>
+
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+
+        <geometry>
+
+          <box size="${base_xy + 0.005} ${base_xy + 0.005} ${stripe_width}"/>
+
+        </geometry>
+
+        <material name="bottom_stripe_red"/>
+
+      </visual>
+
+    </link>
+
+ 
 
     <!-- Disk link -->
+
     <link name="disk">
+
       <!-- Rød disk -->
+
       <visual>
+
         <origin xyz="0 0 0" rpy="0 0 0"/>
+
         <geometry>
+
           <cylinder radius="${disk_radius}" length="${disk_thickness}"/>
+
         </geometry>
+
         <material name="disk_red"/>
+
       </visual>
-      
-      <!-- Hvit indikator -->
-      <visual>
-        <origin xyz="${indicator_origo}" rpy="0 0 0"/>
-        <geometry>
-          <box size="${indicator_width} ${disk_radius} ${indicator_thickness}"/>
-        </geometry>
-        <material name="indicator_white"/>
-      </visual>
+
     </link>
 
-    <!-- Base til disk : Spinner -->
-    <joint name="motor_joint" type="continuous">
-      <origin xyz="0 0 ${base_height/2 + disk_thickness/2}" rpy="0 0 0"/>
-      <axis xyz="0 0 1"/>
-      <parent link="base_link"/>
-      <child link="disk"/>
+ 
+
+    <!-- Indicator link -->
+
+    <link name="indicator_link">
+
+      <!-- Hvit indikator -->
+
+      <visual>
+
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+
+        <geometry>
+
+          <box size="${indicator_width} ${disk_radius} ${indicator_thickness}"/>
+
+        </geometry>
+
+        <material name="indicator_white"/>
+
+      </visual>
+
+    </link>
+
+ 
+
+    <!-- Fixed joint for top stripe -->
+
+    <joint name="top_stripe_joint" type="fixed">
+
+      <origin xyz="${stripe1_origo}" rpy="0 0 0"/>
+
+      <parent link="base"/>
+
+      <child link="top_stripe_link"/>
+
     </joint>
+
+ 
+
+    <!-- Fixed joint for bottom stripe -->
+
+    <joint name="bottom_stripe_joint" type="fixed">
+
+      <origin xyz="${stripe2_origo}" rpy="0 0 0"/>
+
+      <parent link="base"/>
+
+      <child link="bottom_stripe_link"/>
+
+    </joint>
+
+ 
+
+    <!-- Base to disk joint -->
+
+    <joint name="motor_joint" type="continuous">
+
+      <origin xyz="0 0 ${base_height/2 + disk_thickness/2}" rpy="0 0 0"/>
+
+      <axis xyz="0 0 1"/>
+
+      <parent link="base"/>
+
+      <child link="disk"/>
+
+    </joint>
+
+ 
+
+    <!-- Disk to indicator joint -->
+
+    <joint name="indicator_joint" type="fixed">
+
+      <origin xyz="${indicator_origo}" rpy="0 0 0"/>
+
+      <parent link="disk"/>
+
+      <child link="indicator_link"/>
+
+    </joint>
+
   </xacro:macro>
+
 </robot>

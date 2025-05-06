@@ -12,13 +12,13 @@ def generate_launch_description():
     PID_node = Node(
             package='qube_controller',
             executable='PID_controller',
-            name='qube_controller',
+            name='pid_controller',
             parameters=[{
                 'kp': 1.0,
                 'ki': 0.0,
-                'kd': 0.0,
-                'setpoint': 2.0,
-                'use_sim_time': LaunchConfiguration('simulation')
+                'kd': 0.1,
+                'setpoint': 3.0,
+                'use_sim_time': False
             }],
             output='screen'
         )
