@@ -15,10 +15,6 @@ qube_description/
 ├── urdf/
 │   ├── qube.macro.xacro
 │   └── qube.urdf.xacro
-├── test/
-│   ├── test_copyright.py
-│   ├── test_flake8.py
-│   └── test_pep257.py
 ├── qube_description/
 │   └── __init__.py
 ├── resource/
@@ -60,10 +56,6 @@ qube_description/
 ### Python-struktur
 
 - `qube_description/__init__.py`: Init-fil for ROS2-kompatibel Python-pakke. Ikke funksjonell i denne pakken, men nødvendig for strukturen.
-
-### Tester
-
-- `test/test_flake8.py`, `test_pep257.py`, `test_copyright.py`
 
 ## Systeminteraksjoner og flyt
 
