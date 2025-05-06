@@ -6,7 +6,6 @@ from launch.substitutions import LaunchConfiguration
 from launch.actions import DeclareLaunchArgument
 
 def generate_launch_description():
-    sim_arg = DeclareLaunchArgument('simulation', default_value='false')
     
     # PID node -- leser av joint states og publiserer til velocity_controller   
     PID_node = Node(
@@ -24,7 +23,6 @@ def generate_launch_description():
         )
         
     return LaunchDescription([
-        sim_arg,
         PID_node,
     ])
 

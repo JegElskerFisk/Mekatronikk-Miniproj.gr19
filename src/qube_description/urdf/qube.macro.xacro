@@ -14,9 +14,9 @@
 
     </material>
 
-    <material name="top_stripe_red">
+    <material name="top_stripe_blue">
 
-      <color rgba="1 0 0 1"/>
+      <color rgba="0 0 1 1"/>
 
     </material>
 
@@ -72,7 +72,7 @@
 
     <!-- Striper -->
 
-    <xacro:property name="stripe_width" value="0.01" />
+    <xacro:property name="stripe_width" value="0.003" />
 
     <xacro:property name="stripe1_origo" value="0 0 ${base_height/2 - 0.01}" />
 
@@ -102,9 +102,9 @@
 
     <!-- Indikator -->
 
-    <xacro:property name="indicator_width" value="0.005" /> 
+    <xacro:property name="indicator_width" value="0.0015" /> 
 
-    <xacro:property name="indicator_thickness" value="0.004" /> 
+    <xacro:property name="indicator_thickness" value="0.003" /> 
 
     <xacro:property name="indicator_origo" value="0 ${disk_radius/2} ${disk_thickness/2}" />
 
@@ -196,7 +196,7 @@
 
     <link name="top_stripe_link">
 
-      <!-- Rød stripe top -->
+      <!-- Blå stripe top -->
 
       <visual>
 
@@ -204,11 +204,11 @@
 
         <geometry>
 
-          <box size="${base_xy + 0.005} ${base_xy + 0.005} ${stripe_width}"/>
+          <box size="${base_xy + 0.001} ${base_xy + 0.001} ${stripe_width}"/>
 
         </geometry>
 
-        <material name="top_stripe_red"/>
+        <material name="top_stripe_blue"/>
 
       </visual>
 
@@ -228,7 +228,7 @@
 
         <geometry>
 
-          <box size="${base_xy + 0.005} ${base_xy + 0.005} ${stripe_width}"/>
+          <box size="${base_xy + 0.001} ${base_xy + 0.001} ${stripe_width}"/>
 
         </geometry>
 
@@ -316,13 +316,13 @@
 
  
 
-    <!-- Base to disk joint -->
+    <!-- Base til disk joint -->
 
     <joint name="motor_joint" type="continuous">
 
-      <origin xyz="0 0 ${base_height/2 + disk_thickness/2}" rpy="0 0 0"/>
+      <origin xyz="0 0 ${base_height/2 + disk_thickness/2}" rpy="0 0 ${3.1415/4}"/>
 
-      <axis xyz="0 0 1"/>
+      <axis xyz="0 0 -1"/>
 
       <parent link="base"/>
 
@@ -332,7 +332,7 @@
 
  
 
-    <!-- Disk to indicator joint -->
+    <!-- Disk til indicator joint -->
 
     <joint name="indicator_joint" type="fixed">
 
