@@ -2,6 +2,8 @@
 
 Dette prosjektet er et komplett ROS2-oppsett for styring og simulering av en [**Quanser Qube**](https://www.quanser.com/products/qube-servo-2/). Prosjektet integrerer geometri, maskinvare, kontroll og visualisering i ett samlet system.
 
+
+DISCLAIMER (bug) : Kommandoer fra PID kontroller blir ikke videreført til fysisk qube
 ## Formål
 
 Prosjektets mål er å:
