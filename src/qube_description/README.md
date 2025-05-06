@@ -121,7 +121,7 @@ Følgende komponenter samarbeider i visualiseringssystemet:
 
 ### Joints
 
-- `disk_joint`: Kontinuerlig joint mellom base og disk (roterer rundt Z-aksen).
+- `motor_joint`: Kontinuerlig joint mellom base og disk (roterer rundt Z-aksen).
 - `world_to_base`: Fast joint mellom `world` og `base`.
 
 ## Bygging og kjøring
