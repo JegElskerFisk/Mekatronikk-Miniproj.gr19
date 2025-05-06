@@ -57,31 +57,30 @@ qube_bringup/
 Følgende komponenter samarbeider i bringup-systemet:
 
 ```
-                                +-----------------------------+
-                                | /joint_state_publisher_gui  |
-                                +-----------------------------+
-                                      ^               |
-                                      |               v
-                          +-------------------+   +---------------+
-                          | /robot_description|   | /joint_states |
-                          +-------------------+   +---------------+
-                                      ^               |
-                                      |               v
-                                +-----------------------------+
-                                |   /robot_state_publisher    |
-                                +-----------------------------+
-                                              |
-                                              v
-                                        +-----------+
-                                        |    /tf    |
-                                        +-----------+
-                                              |
-                                              v
-                        +--------------------------------------------+
-                        | /transform_listener_impl_5f18b7b6a550      |
-                        |              (RViz lytter)                 |
-                        +--------------------------------------------+
- ```                       
+                       +---------------------------+     +---------------------------+
+                       | /joint_state_broadcaster  |     |   /velocity_controller    |    
+                       +---------------------------+     +---------------------------+
+                                   |
+                                   v
+                            +---------------+
+                            | /joint_states |
+                            +---------------+
+                                   |
+                                   v
+                       +-----------------------------+
+                       |  /robot_state_publisher     |
+                       +-----------------------------+
+                               |                  |
+                               v                  v
+                  +--------------------+       +---------+
+                  | /robot_description |       |   /tf   |
+                  +--------------------+       +---------+
+                         |                          |
+                         v                          v
+            +-----------------------+   +--------------------------+
+            |  /controller_manager  |   | /transform_listener_impl |
+            +-----------------------+   +--------------------------+
+```                  
 - `bringup.launch.py` starter alle relevante noder og launcher
 - `robot_state_publisher` parser `controlled_qube.urdf.xacro` og publiserer `/robot_description` og `/tf`
 - `joint_state_broadcaster` og `velocity_controller` settes opp av ROS2 Control via `qube_driver`
@@ -125,20 +124,6 @@ Dette starter:
 - Publisering av `/robot_description`, `/joint_states`, `/tf`
 - Visualisering og kontroll
 
-## Testing
-
-Testene kan kjøres slik:
-
-```bash
-colcon test
-colcon test-result --verbose
-```
-
-Pakken inneholder tester for:
-
-- Kodeformat (PEP8)
-- Dokumentasjonsstil (PEP257)
-- Copyright-header
 
 ## Avhengigheter
 
